@@ -9,6 +9,7 @@
 
     * {
         margin: 0;
+        padding: 0;
         box-sizing: border-box;
     }
 
@@ -49,5 +50,18 @@
     
     }
 
+    .pastas {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        justify-content: center;
+        
+    }
+    
+    .pasta {
+        background-color: blueviolet;
+        height: 60px;
+        width: 140px;
 
+}
 }
