@@ -1,0 +1,53 @@
+@media (max-width: 1500px) {
+
+    :root {
+    --primary: #e88f12;
+    --sec: #dd2f10;
+    --bgd: #f6d8ae;
+
+}
+
+    * {
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: var(--bgd);
+    }
+
+    nav {
+        background-color: var(--primary);
+        height: 70px;
+        width: 100%;
+        display: inline-flex;
+        position: fixed;
+        /* justify-content: center; */
+        justify-content: space-between;
+    }
+    
+    nav h1 {
+        color: var(--sec);
+        padding: 20px;
+    }
+    
+    nav svg {
+        color: var(--sec);
+        width: 40px;
+        height: 40px;
+        margin: 15px 20px;
+
+        /* padding: 10px 10px 10px 10px; */
+    }
+
+    nav img {
+        border-radius: 50%;
+        border: 5px solid var(--sec);
+        object-fit: cover;
+        height: 47px;
+        margin: 10px 20px 0 10px;
+    
+    }
+
+
+}
