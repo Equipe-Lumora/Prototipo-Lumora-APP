@@ -1,9 +1,14 @@
 @media (max-width: 1500px) {
 
+    @import url('https://fonts.googleapis.com/css2?family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+
     :root {
     --primary: #e88f12;
     --sec: #dd2f10;
     --bgd: #f6d8ae;
+    --block: #f9eddc;
+    --subt: #f8cc80;
 
 }
 
@@ -11,6 +16,7 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        font-family:"SN Pro", sans-serif;
     }
 
     body {
@@ -19,13 +25,15 @@
 
     nav {
         background-color: var(--primary);
-        height: 70px;
-        width: 100%;
-        display: inline-flex;
-        position: fixed;
-        /* justify-content: center; */
-        justify-content: space-between;
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        align-items: center;
+        padding: 18px;
+        max-height: 60px;
+        /* justify-content: space-between; */
     }
+    
     
     nav h1 {
         color: var(--sec);
@@ -34,8 +42,8 @@
     
     nav svg {
         color: var(--sec);
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         margin: 15px 20px;
 
         /* padding: 10px 10px 10px 10px; */
@@ -47,21 +55,87 @@
         object-fit: cover;
         height: 47px;
         margin: 10px 20px 0 10px;
+        
     
     }
 
+    
+    .bloco-rolo {
+        background-color: var(--block);
+        
+        margin: 10px;
+        border-radius: 12px;
+        padding: 20px 10px;
+        display: flex;
+        align-items: center;
+    
+    }
+
+    #rolo {
+        height: 160px;
+        width: 800px;
+        /* Tentar colocar itens lado-a-lado */
+
+    }
+
+    #rolo img {
+        height: 110px;
+        width: 110px;
+        border-radius: 10px;
+    }
+    
     .pastas {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
+        grid-template-columns: repeat(2, 0.2fr);
+        gap: 10px;
         justify-content: center;
-        
+        margin: 90px 10px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .pasta {
+        width: 200px;
+        height: 200px ;
+        margin: 0 auto;
+        padding: 15px;
+        border-radius: 12px;
+        background-color: var(--block);
+        text-align: center;
+
+    }
+
+    .titulo {
+        font-size: 20px;
+        height: 50px;
+        margin: 20px 20px;
+        background-color:  var(--subt);
+        padding: 10px;
+        text-align: center;
     }
     
-    .pasta {
-        background-color: blueviolet;
-        height: 60px;
-        width: 140px;
+    #plus-icon {
+        stroke-width: 3.5px;
+        color: var(--primary);
+        height: 100px;
+        
+    }
 
-}
+    #camera {
+        background-color: var(--primary);
+        border-radius: 50%;
+        z-index: 100;
+        height: 90px;
+        width: 90px;
+        position: fixed;
+        top: 820px;
+        left: 15px;
+        padding: 20px;
+    }
+    
+    #camera svg {
+        height: 50px;
+        width: 50px;
+        align-items: center;
+        color: var(--sec);
+    }
 }
