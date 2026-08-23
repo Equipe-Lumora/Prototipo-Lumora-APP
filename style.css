@@ -1,141 +1,495 @@
-@media (max-width: 1500px) {
+/* style.css - Design System do EstudAI */
 
-    @import url('https://fonts.googleapis.com/css2?family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap');
-
-
-    :root {
-    --primary: #e88f12;
-    --sec: #dd2f10;
-    --bgd: #f6d8ae;
-    --block: #f9eddc;
-    --subt: #f8cc80;
-
+/* Reset básico e tipografia */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* Remove o highlight de toque no mobile */
 }
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family:"SN Pro", sans-serif;
-    }
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212; /* Dark Mode Fundo Principal */
+    color: #ffffff; /* Texto branco padrão */
+    overflow-x: hidden;
+}
 
-    body {
-        background-color: var(--bgd);
-    }
+.app-container {
+    max-width: 480px; /* Limite de largura estilo celular no desktop */
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 80px; /* Espaço para o botão flutuante */
+}
 
-    nav {
-        background-color: var(--primary);
-        display: flex;
-        gap: 30px;
-        justify-content: center;
-        align-items: center;
-        padding: 18px;
-        max-height: 60px;
-        /* justify-content: space-between; */
-    }
-    
-    
-    nav h1 {
-        color: var(--sec);
-        padding: 20px;
-    }
-    
-    nav svg {
-        color: var(--sec);
-        width: 30px;
-        height: 30px;
-        margin: 15px 20px;
+/* --- Cabeçalho --- */
+.main-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
 
-        /* padding: 10px 10px 10px 10px; */
-    }
+.main-header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #FFC107; /* Dourado/Amarelo dos destaques */
+    letter-spacing: 0.5px;
+}
 
-    nav img {
-        border-radius: 50%;
-        border: 5px solid var(--sec);
-        object-fit: cover;
-        height: 47px;
-        margin: 10px 20px 0 10px;
-        
-    
-    }
+.header-divider {
+    border: 0;
+    height: 1px;
+    background-color: #333; /* Linha sutil do cabeçalho */
+    margin-top: 10px;
+}
 
-    
-    .bloco-rolo {
-        background-color: var(--block);
-        
-        margin: 10px;
-        border-radius: 12px;
-        padding: 20px 10px;
-        display: flex;
-        align-items: center;
-    
-    }
+/* --- Títulos das Seções --- */
+.section {
+    margin-bottom: 25px;
+}
 
-    #rolo {
-        height: 160px;
-        width: 800px;
-        /* Tentar colocar itens lado-a-lado */
+.section-title {
+    font-size: 16px;
+    color: #888; /* Cinza para títulos secundários */
+    margin-bottom: 12px;
+    font-weight: 500;
+}
 
-    }
+/* --- Cartão Não Catalogado (Rolo de Câmera) --- */
+.catalog-card {
+    background-color: #1E1E1E; /* Cinza escuro dos cartões */
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
 
-    #rolo img {
-        height: 110px;
-        width: 110px;
-        border-radius: 10px;
-    }
-    
-    .pastas {
-        display: grid;
-        grid-template-columns: repeat(2, 0.2fr);
-        gap: 10px;
-        justify-content: center;
-        margin: 90px 10px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-    .pasta {
-        width: 200px;
-        height: 200px ;
-        margin: 0 auto;
-        padding: 15px;
-        border-radius: 12px;
-        background-color: var(--block);
-        text-align: center;
+.catalog-icon-bg {
+    width: 60px;
+    height: 60px;
+    background-color: #E6B13D; /* O fundo dourado opaco do ícone na imagem */
+    border-radius: 10px;
+}
 
-    }
+.catalog-info h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
 
-    .titulo {
-        font-size: 20px;
-        height: 50px;
-        margin: 20px 20px;
-        background-color:  var(--subt);
-        padding: 10px;
-        text-align: center;
-    }
-    
-    #plus-icon {
-        stroke-width: 3.5px;
-        color: var(--primary);
-        height: 100px;
-        
-    }
+.catalog-info p {
+    font-size: 14px;
+    color: #aaa;
+}
 
-    #camera {
-        background-color: var(--primary);
-        border-radius: 50%;
-        z-index: 100;
-        height: 90px;
-        width: 90px;
-        position: fixed;
-        top: 820px;
-        left: 15px;
-        padding: 20px;
-    }
-    
-    #camera svg {
-        height: 50px;
-        width: 50px;
-        align-items: center;
-        color: var(--sec);
-    }
+/* --- Grid de Álbuns --- */
+.albums-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+/* Cartão de Álbum */
+.album-card {
+    background-color: #1E1E1E;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.album-thumbnail-bg {
+    width: 100%;
+    height: 120px;
+    background-color: #3A3215; /* Cor de thumbnail escura da imagem */
+}
+
+.album-info {
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.album-info h3 {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Cartão Criar Novo Álbum (Borda Tracejada) */
+.create-album-card.dashed-border {
+    border: 1.5px dashed #444; /* Borda tracejada escura */
+    border-radius: 12px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFC107; /* Texto dourado interno */
+    height: 165px; /* Alinhando altura com o album-card (thumbnail + info) */
+}
+
+.dashed-content {
+    text-align: center;
+    cursor: pointer;
+}
+
+.dashed-content p {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* --- Botão Flutuante --- */
+.floating-action-button {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background-color: #E6B13D; /* Mesma cor do fundo do ícone */
+    border-radius: 50%;
+    border: none;
+    color: #fff;
+    font-size: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    z-index: 100;
+}
+
+.floating-action-button span {
+    position: relative;
+    top: -2px; /* Ajuste visual do '+' */
+}
+
+/* --- Controle de Views (SPA) --- */
+.view.hidden {
+    display: none;
+}
+
+/* --- Estilos do Cabeçalho da Tela 2 --- */
+.header-with-back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.btn-back {
+    position: absolute;
+    left: 0;
+    background: none;
+    border: none;
+    color: #FFC107;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* --- Card de Mídia / Imagem --- */
+.media-card {
+    background-color: #1E1E1E;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.media-preview-bg {
+    width: 100%;
+    height: 180px;
+    background-color: #3A3215;
+}
+
+.media-caption {
+    padding: 12px 15px;
+}
+
+.media-caption p {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* --- Tabela de Transcrição --- */
+.section-badge-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.badge-icon {
+    width: 18px;
+    height: 18px;
+    background-color: #E6B13D;
+    border-radius: 4px;
+}
+
+.section-title-light {
+    font-size: 14px;
+    color: #ccc;
+    font-weight: 500;
+}
+
+.transcription-table-container {
+    background-color: #1E1E1E;
+    border-radius: 12px;
+    padding: 15px;
+    border: 1px solid #2A2A2A;
+}
+
+.transcription-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.transcription-table th {
+    color: #888;
+    font-weight: 400;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #2A2A2A;
+    text-align: left;
+}
+
+.transcription-table td {
+    padding: 10px 0;
+    border-bottom: 1px solid #2A2A2A;
+}
+
+.transcription-table tr:last-child td {
+    border-bottom: none;
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* --- Botões de Ação dos Flashcards --- */
+.flashcard-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.btn-action {
+    padding: 15px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.btn-action.dashed {
+    border: 1px dashed #444;
+    color: #aaa;
+}
+
+.btn-action.primary {
+    border: 1.5px solid #FFC107;
+    color: #FFC107;
+    background-color: rgba(255, 193, 7, 0.05);
+}
+
+.btn-delete-album {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #ff5555;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-delete-album:hover {
+    background: #ff5555;
+    color: #ffffff;
+}
+
+/* --- Modais e Câmera (Dia 2) --- */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: #1E1E1E;
+    border-radius: 16px;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+.modal-content h2 {
+    color: #FFC107;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+#camera-feed {
+    width: 100%;
+    border-radius: 12px;
+    background-color: #000;
+    max-height: 320px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.camera-actions, .modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.folder-select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    background: #121212;
+    color: #fff;
+    border: 1px solid #444;
+    font-size: 14px;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+.folder-select option {
+    background: #121212;
+    color: #fff;
+}
+
+.fab-svg-icon {
+    width: 40px;
+    height: 40px;
+    display: block;
+    /* Caso precise alterar a cor do SVG para branco via CSS: */
+    /* filter: brightness(0) invert(1); */
+}
+
+/* --- Estilos para Flashcards e Transcrição (Dia 3) --- */
+.transcription-box {
+    background-color: #1E1E1E;
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 10px;
+    border: 1px solid #2A2A2A;
+    color: #ddd;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.flashcards-list-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.flashcard-item {
+    background-color: #1E1E1E;
+    border: 1px solid #FFC107;
+    border-radius: 10px;
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    position: relative;
+}
+
+.flashcard-item:active {
+    transform: scale(0.98);
+}
+
+.flashcard-question {
+    font-size: 14px;
+    font-weight: 600;
+    color: #FFC107;
+}
+
+.flashcard-answer {
+    font-size: 13px;
+    color: #ffffff;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed #333;
+}
+
+.btn-delete-fc {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    color: #ff5555;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.action-bar-foto {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.btn-mini {
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    border: 1px solid #444;
+    background: #121212;
+    color: #FFC107;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Botão para deletar foto individual */
+.btn-delete-media {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #ff5555;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-delete-media:hover {
+    background: #ff5555;
+    color: #ffffff;
 }
