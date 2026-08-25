@@ -1,13 +1,13 @@
 const CACHE_NAME = 'estudai-v1';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/css/style.css',
-  '/js/app.js',
-  '/js/db.js',
-  '/manifest.json',
-  '/icons/icon-192.png',
-  '/icons/icon-512.png'
+  './',
+  './index.html',
+  './style.css',
+  './js/app.js',
+  './js/db.js',
+  './manifest.json',
+  './images/icon-192.png', 
+  './images/icon-512.png'  
 ];
 
 // Instala o Service Worker e salva os arquivos no cache

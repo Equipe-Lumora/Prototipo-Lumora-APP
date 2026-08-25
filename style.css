@@ -184,7 +184,61 @@ body {
     cursor: pointer;
 }
 
-/* --- Card de Mídia / Imagem --- */
+/* ========================================================= */
+/* --- GRADE DE MINIATURAS DENTRO DA PASTA (ESTILO GALERIA) - */
+/* ========================================================= */
+.folder-images-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.mini-image-card {
+    background-color: #1E1E1E;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid #2a2a2a;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.mini-image-card:active {
+    transform: scale(0.97);
+}
+
+.mini-image-card:hover {
+    border-color: #FFC107;
+}
+
+.mini-thumbnail {
+    width: 100%;
+    height: 110px;
+    background-color: #3A3215;
+    object-fit: cover;
+}
+
+.mini-info {
+    padding: 10px;
+    text-align: left;
+}
+
+.mini-info h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mini-info p {
+    font-size: 11px;
+    color: #888;
+}
+
+/* --- Card de Mídia Antigo / Compatibilidade --- */
 .media-card {
     background-color: #1E1E1E;
     border-radius: 12px;
@@ -388,8 +442,6 @@ body {
     width: 40px;
     height: 40px;
     display: block;
-    /* Caso precise alterar a cor do SVG para branco via CSS: */
-    /* filter: brightness(0) invert(1); */
 }
 
 /* --- Estilos para Flashcards e Transcrição (Dia 3) --- */
@@ -492,4 +544,77 @@ body {
 .btn-delete-media:hover {
     background: #ff5555;
     color: #ffffff;
+}
+
+/* ========================================================= */
+/* --- SIDEBAR LATERAL DEFINITIVA (MENU HAMBÚRGUER) --- */
+/* ========================================================= */
+
+.sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: -320px !important;
+    width: 280px !important;
+    height: 100vh !important;
+    background-color: #1a1a1a !important;
+    border-right: 1px solid #333 !important;
+    z-index: 999999 !important;
+    transition: left 0.3s ease-in-out !important;
+    padding: 24px !important;
+    box-sizing: border-box !important;
+    box-shadow: 10px 0 30px rgba(0,0,0,0.9) !important;
+}
+
+.sidebar.open {
+    left: 0 !important;
+}
+
+.sidebar-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.75) !important;
+    z-index: 999998 !important;
+    display: none !important;
+}
+
+.sidebar-overlay:not(.hidden) {
+    display: block !important;
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.sidebar h2 {
+    color: #FFC107;
+    font-size: 18px;
+}
+
+#menu-compartilhar {
+    padding: 15px 0;
+    color: #e6e6e6;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 0.5px solid #2a2a2a;
+    transition: color 0.2s;
+}
+
+#menu-compartilhar:hover {
+    color: #FFC107;
+}
+
+#btn-close-sidebar {
+    background: none;
+    border: none;
+    color: #8a8a8a;
+    font-size: 20px;
+    cursor: pointer;
 }

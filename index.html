@@ -9,10 +9,10 @@
     <!-- CONFIGURAÇÕES DO PWA                       -->
     <!-- ========================================== -->
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#d4af37"> <!-- Combinando com o dourado da logo -->
+    <meta name="theme-color" content="#d4af37">
     
     <!-- Suporte para iOS (iPhone/iPad) -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="EstudAI">
     <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -27,7 +27,9 @@
 
         <!-- TELA 1: ÁLBUNS (INICIAL) -->
         <div id="view-albuns" class="view">
-            <header class="main-header">
+            <!-- Header preservado -->
+            <header class="main-header" style="position: relative;">
+                <button id="btn-hamburger" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #F0C445; font-size: 22px; cursor: pointer; padding: 0;">☰</button>
                 <h1>EstudAI</h1>
                 <hr class="header-divider">
             </header>
@@ -69,9 +71,7 @@
             <hr class="header-divider">
 
             <main class="content">
-                <!-- Container de Imagens da Pasta -->
                 <div id="imagens-container"></div>
-
                 <div id="detalhes-vazio" class="hidden" style="text-align: center; color: #666; padding: 40px 0;">
                     <p>Nenhuma imagem nesta pasta ainda.</p>
                 </div>
@@ -118,6 +118,92 @@
             </div>
         </div>
 
+        <!-- MENU LATERAL (SIDEBAR) - CORRIGIDO SEM O HIDDEN -->
+        <div id="sidebar" class="sidebar">
+            <div class="sidebar-content">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                    <h2 style="color: #F0C445; font-size: 18px; margin: 0;">Menu EstudAI</h2>
+                    <button id="btn-close-sidebar" style="background: none; border: none; color: #8a8a8a; font-size: 20px; cursor: pointer;">✕</button>
+                </div>
+                <div id="menu-compartilhar" style="padding: 12px 0; color: #e6e6e6; cursor: pointer; display: flex; align-items: center; gap: 10px; border-bottom: 0.5px solid #2a2a2a;">
+                    <span>🔗 Compartilhar Projeto/Material</span>
+                </div>
+            </div>
+        </div>
+        <div id="sidebar-overlay" class="sidebar-overlay hidden"></div>
+
+        <!-- MODAL DE COMPARTILHAR -->
+        <!-- MODAL DE COMPARTILHAR -->
+        <div id="modal-compartilhar" class="modal hidden">
+            <div class="modal-content" style="background: #0d0d0d; border-radius: 28px; border: 1px solid #2a2a2a; padding: 20px; width: 320px; max-width: 90%; font-family: Roboto, sans-serif;">
+                
+                <div style="display:flex; align-items:center; justify-content: space-between; padding-bottom: 12px;">
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <span style="color:#F0C445; font-size:18px; cursor:pointer;" id="close-share-top">✕</span>
+                        <span style="color:#F0C445; font-weight:500; font-size:17px; letter-spacing:0.3px">Compartilhar</span>
+                    </div>
+                </div>
+                <div style="height:1px; background:#2a2a2a; margin: 0 -20px 16px;"></div>
+
+                <!-- Card do Material -->
+                <div style="background:#161616; border:0.5px solid #2a2a2a; border-radius:12px; padding:10px; display:flex; align-items:center; gap:12px; margin-bottom:15px">
+                    <div style="width:44px; height:44px; border-radius:8px; background:linear-gradient(135deg,#3a2f0d,#1a1608); display:flex; align-items:center; justify-content:center; flex-shrink:0">
+                        <span style="color:#F0C445; font-size:18px;">🧪</span>
+                    </div>
+                    <div>
+                        <p style="color:#fff; font-size:13px; font-weight:500; margin:0">Funções orgânicas tabela</p>
+                        <p style="color:#8a8a8a; font-size:11px; margin:2px 0 0">Química</p>
+                    </div>
+                </div>
+
+                <!-- NOVO: SELEÇÃO DO TIPO DE MATERIAL -->
+                <div style="text-align: left; margin-bottom: 20px;">
+                    <p style="color:#8a8a8a; font-size:13px; font-weight:500; margin:0 0 8px">O que deseja incluir?</p>
+                    <select id="share-type-select" class="folder-select" style="margin-bottom: 0; padding: 10px; font-size: 13px;">
+                        <option value="pasta">Pasta completa (Álbum inteiro)</option>
+                        <option value="foto_completa">Imagem atual + Resumo e Flashcards</option>
+                        <option value="foto_simples">Apenas a imagem atual</option>
+                    </select>
+                </div>
+
+                <p style="text-align: left; color:#8a8a8a; font-size:13px; font-weight:500; margin:0 0 10px">Enviar para colega</p>
+
+                <!-- Colegas -->
+                <div class="share-contact" data-name="Bruno Ramos" style="display:flex; align-items:center; gap:10px; padding:8px 0; cursor:pointer;">
+                    <div style="width:36px; height:36px; border-radius:50%; background:#2a2a2a; display:flex; align-items:center; justify-content:center; flex-shrink:0">
+                        <span style="color:#e6e6e6; font-size:12px; font-weight:500">BR</span>
+                    </div>
+                    <span style="color:#e6e6e6; font-size:14px; flex:1; text-align: left;">Bruno Ramos</span>
+                    <div class="check-box" style="width:20px; height:20px; border-radius:50%; border:1.5px solid #3a3a3a"></div>
+                </div>
+
+                <div class="share-contact selected" data-name="Laura Camerim" style="display:flex; align-items:center; gap:10px; padding:8px 0; cursor:pointer;">
+                    <div style="width:36px; height:36px; border-radius:50%; background:#2a2a2a; display:flex; align-items:center; justify-content:center; flex-shrink:0">
+                        <span style="color:#e6e6e6; font-size:12px; font-weight:500">LC</span>
+                    </div>
+                    <span style="color:#e6e6e6; font-size:14px; flex:1; text-align: left;">Laura Camerim</span>
+                    <div class="check-box" style="width:20px; height:20px; border-radius:50%; background:#F0C445; display:flex; align-items:center; justify-content:center">
+                        <span style="color:#0d0d0d; font-size:11px; font-weight:bold;">✓</span>
+                    </div>
+                </div>
+
+                <div class="share-contact" data-name="Giovanna Nunes" style="display:flex; align-items:center; gap:10px; padding:8px 0 20px; cursor:pointer;">
+                    <div style="width:36px; height:36px; border-radius:50%; background:#2a2a2a; display:flex; align-items:center; justify-content:center; flex-shrink:0">
+                        <span style="color:#e6e6e6; font-size:12px; font-weight:500">GN</span>
+                    </div>
+                    <span style="color:#e6e6e6; font-size:14px; flex:1; text-align: left;">Giovanna Nunes</span>
+                    <div class="check-box" style="width:20px; height:20px; border-radius:50%; border:1.5px solid #3a3a3a"></div>
+                </div>
+
+                <div id="btn-copy-link" style="border-top:0.5px solid #2a2a2a; padding-top:14px; margin-bottom:20px; display:flex; align-items:center; gap:10px; cursor:pointer;">
+                    <span style="color:#8a8a8a; font-size:16px;">🔗</span>
+                    <span style="color:#8a8a8a; font-size:13px; flex:1; text-align: left;">Copiar link de acesso</span>
+                    <span style="color:#8a8a8a; font-size:16px;">📋</span>
+                </div>
+
+                <button id="btn-confirm-share" style="width:100%; background:#F0C445; border:none; border-radius:12px; padding:13px; color:#0d0d0d; font-size:14px; font-weight:500; cursor:pointer; margin-bottom:6px">Compartilhar com 1 pessoa</button>
+            </div>
+        </div>
         <!-- Botão Flutuante -->
         <button id="fab-button" class="floating-action-button" aria-label="Tirar Foto">
             <img src="images/camera.svg" alt="Câmera" class="fab-svg-icon" onerror="this.outerHTML='📷'">
